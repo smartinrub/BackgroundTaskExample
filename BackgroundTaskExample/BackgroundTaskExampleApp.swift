@@ -35,8 +35,8 @@ struct BackgroundTaskExampleApp: App {
     
     func scheduleAppRefresh() {
         let request = BGAppRefreshTaskRequest(identifier: "com.sergiomartinrubio.BackgroundTaskExample.refresh")
-        // Fetch no earlier than 15 seconds from now. This will be the task execution frequency
-        request.earliestBeginDate = .now.addingTimeInterval(15)
+        // Fetch no earlier than 3 seconds from now. This will be the task execution frequency
+        request.earliestBeginDate = .now.addingTimeInterval(3)
         try? BGTaskScheduler.shared.submit(request)
     }
 }

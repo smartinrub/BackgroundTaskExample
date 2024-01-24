@@ -26,6 +26,8 @@ struct BackgroundTaskExampleApp: App {
             }
         }
         .backgroundTask(.appRefresh("com.sergiomartinrubio.BackgroundTaskExample.refresh")) { // registers task
+            // schedule another task to run this task periodically
+            scheduleAppRefresh()
             // Perform your periodic task here
             os_log("Handling background task")
         }
@@ -33,7 +35,8 @@ struct BackgroundTaskExampleApp: App {
     
     func scheduleAppRefresh() {
         let request = BGAppRefreshTaskRequest(identifier: "com.sergiomartinrubio.BackgroundTaskExample.refresh")
-        request.earliestBeginDate = .now.addingTimeInterval(15) // Fetch no earlier than 15 seconds from now
+        // Fetch no earlier than 15 seconds from now. This will be the task execution frequency
+        request.earliestBeginDate = .now.addingTimeInterval(15)
         try? BGTaskScheduler.shared.submit(request)
     }
 }

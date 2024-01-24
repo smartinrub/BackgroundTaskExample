@@ -10,6 +10,7 @@ Testing background tasks in the debugger build is not really possible but we can
 4. Run on the debugger console: `e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.sergiomartinrubio.BackgroundTaskExample.refresh"]`
 5. You should see a log like `Handling background task`.
 6. For expiring task: `e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateExpirationForTaskWithIdentifier:@"com.sergiomartinrubio.BackgroundTaskExample.refresh"]`
+7. `Handling background task` should stop after expiring the task
 
 You may want to test this with a production build in TestFlight.
 

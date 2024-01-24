@@ -5,12 +5,11 @@
 Testing background tasks in the debugger build is not really possible but we can simulate it.
 
 1. Run the app on your device or simulator.
-2. Put a breakpoint somewhere in the app.
-3. Move the app to the backgound and back to the foregrond
-4. The breakpoint should trigger and the app would pause
-5. Run on the debugger console: `e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.sergiomartinrubio.BackgroundTaskExample.refresh"]`
-6. You should see a log like `Handling background task`.
-7. For expiring task: `e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateExpirationForTaskWithIdentifier:@"com.sergiomartinrubio.BackgroundTaskExample.refresh"]`
+2. Move the app to the background
+3. Pause the app (|| symbol at the bottom)
+4. Run on the debugger console: `e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.sergiomartinrubio.BackgroundTaskExample.refresh"]`
+5. You should see a log like `Handling background task`.
+6. For expiring task: `e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateExpirationForTaskWithIdentifier:@"com.sergiomartinrubio.BackgroundTaskExample.refresh"]`
 
 You may want to test this with a production build in TestFlight.
 

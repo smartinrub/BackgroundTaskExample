@@ -19,8 +19,8 @@ struct BackgroundTaskExampleApp: App {
         }
         .onChange(of: phase) { newPhase in
             switch newPhase {
-            case .active:
-                print("App is active")
+            case .background:
+                print("App is in background")
                 scheduleAppRefresh()
             default: break
             }
